@@ -22,14 +22,16 @@ def get_services(consul_host, consul_port):
    return list(json.keys())
 
 def _get_consul(consul_host, consul_port):
-   if consul_host is None and 'CONSUL_HOST' in os.environ:
-      consul_host = os.environ['CONSUL_HOST']
-   else:
-      raise DiscoveryError("Environment variable 'CONSUL_HOST' must be provided when 'consul_host' parameter is not provided" % service_name)
-   if consul_port is None and 'CONSUL_PORT' in os.environ:
-      consul_port = os.environ['CONSUL_PORT']
-   else:
-      raise DiscoveryError("Environment variable 'CONSUL_PORT' must be provided when 'consul_port' parameter is not provided" % service_name)
+   if consul_host is None:
+      if 'CONSUL_HOST' in os.environ:
+         consul_host = os.environ['CONSUL_HOST']
+      else:
+         raise DiscoveryError("Environment variable 'CONSUL_HOST' must be provided when 'consul_host' parameter is not provided")
+   if consul_port is None:
+      if 'CONSUL_PORT' in os.environ:
+         consul_port = os.environ['CONSUL_PORT']
+      else:
+         raise DiscoveryError("Environment variable 'CONSUL_PORT' must be provided when 'consul_port' parameter is not provided")
    return consul_host, consul_port
 
 def service_ready(service_name, consul_host=None, consul_port=None, wait=False, delay=0.1):
