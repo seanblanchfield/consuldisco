@@ -50,4 +50,4 @@ def discover_endpoints(service_name, consul_host=None, consul_port=None):
 def discover_endpoint(service_name, consul_host=None, consul_port=None):
    ''' Returns the first endpoint matching the provided service name.
    '''
-   return discover_endpoints(service_name, consul_host, consul_port)
+   return discover_endpoints(service_name, consul_host, consul_port)[0]
