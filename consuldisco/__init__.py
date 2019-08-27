@@ -85,4 +85,4 @@ def discover_endpoint(service_name, consul_host=None, consul_port=None, wait=Fal
       delay --       The number of seconds to wait between rechecking consul for 'service_name' if it
                      was not found the first time, and 'wait' is True.
    '''
-   return discover_endpoints(service_name, consul_host, consul_port)[0]
+   return discover_endpoints(service_name, consul_host, consul_port, wait, delay)[0]
