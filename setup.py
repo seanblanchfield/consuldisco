@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="consuldisco",
-    version="0.0.2",
+    version="0.0.3",
     author="Tilvur Ltd",
     author_email="sblanchfield@gmail.com",
     description="A service discovery utility for finding services tracked by Consul.",
