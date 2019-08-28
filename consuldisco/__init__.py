@@ -12,7 +12,7 @@ class DiscoveryError(Exception):
     """Base class for exceptions in this module."""
     pass
 
-def get_services(consul_host, consul_port):
+def get_services(consul_host=None, consul_port=None):
    ''' Looks up available services in Consul.
    '''
    consul_host, consul_port = _get_consul(consul_host, consul_port)
