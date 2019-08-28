@@ -15,6 +15,7 @@ class DiscoveryError(Exception):
 def get_services(consul_host, consul_port):
    ''' Looks up available services in Consul.
    '''
+   consul_host, consul_port = _get_consul(consul_host, consul_port)
    url = "http://%s:%d/v1/catalog/services" % (consul_host, int(consul_port))
    response = requests.get(url)
    response.raise_for_status()
